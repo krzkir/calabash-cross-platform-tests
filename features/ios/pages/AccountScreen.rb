@@ -28,12 +28,15 @@ class AccountScreen < Calabash::IBase
 
   def email_field
     "textField marked:'TextField.email'"
+  end  
+
+  def phone_number_field
+    "textField marked:'TextField.phone-number'"
   end
 
   def account_updated_message
     "textView text:'Your account has been updated!'"
   end
-
 
   def confirm_popup_title 
     "view:'_UIAlertControllerView' marked:'Are you sure?'"
@@ -80,7 +83,7 @@ class AccountScreen < Calabash::IBase
   end
 
   def change_name
-    wait_for_element_exists(name_field)
+  #  wait_for_element_exists(name_field)
     if query(name_field,:text)[0]=="Te St"
       clear_text(name_field)
       touch(name_field)
@@ -91,6 +94,22 @@ class AccountScreen < Calabash::IBase
       touch(name_field)
       wait_for_keyboard
       keyboard_enter_text("Te St")
+    end
+    tap_save_button
+  end
+
+  def change_phone_number
+ #   wait_for_element_exists(phone_number_field)
+    if query(phone_number_field,:text)[0]=="8484545484"
+      clear_text(phone_number_field)
+      touch(phone_number_field)
+      wait_for_keyboard
+      keyboard_enter_text("8007006001")
+    else
+      clear_text(phone_number_field)
+      touch(phone_number_field)
+      wait_for_keyboard
+      keyboard_enter_text("8484545484")
     end
     tap_save_button
   end

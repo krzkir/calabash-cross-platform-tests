@@ -1,4 +1,3 @@
-
 class WelcomeScreen < Calabash::ABase
 
   def trait

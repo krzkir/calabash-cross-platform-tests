@@ -24,11 +24,13 @@ class AccountScreen < Calabash::ABase
   	"EditText id:'username_info'"
   end
 
+  def phone_number_field
+    "EditText id:'phone_number_info'"
+  end
+
   def account_updated_message
     "TextView text:'Your account has been updated!'"
   end
-
-
 
   def tap_logout_button
     tap_when_element_exists(logout_button)
@@ -47,13 +49,25 @@ class AccountScreen < Calabash::ABase
   end
 
   def change_name
-  	wait_for_element_exists(name_field)
+ #   wait_for_element_exists(name_field)
     if (query(name_field,:text)[0])=="Te St"
       clear_text_in(name_field)
       enter_text(name_field,"Test Test")
     else
       clear_text_in(name_field)     
       enter_text(name_field,"Te St")
+    end
+    tap_save_button
+  end
+  
+  def change_phone_number
+ # 	wait_for_element_exists(phone_number_field)
+    if (query(phone_number_field,:text)[0])=="8484545484"
+      clear_text_in(phone_number_field)
+      enter_text(phone_number_field,"8007006001")
+    else
+      clear_text_in(phone_number_field)     
+      enter_text(phone_number_field,"8484545484")
     end
     tap_save_button
   end

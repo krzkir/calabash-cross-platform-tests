@@ -1,4 +1,3 @@
-
 class LoginScreen < Calabash::ABase
 
   def trait
