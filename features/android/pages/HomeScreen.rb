@@ -42,6 +42,7 @@ class HomeScreen < Calabash::ABase
 
   def status(range,sensor)
     wait_for_element_exists(alert_status_message)
+    sleep 2
     fail unless query(alert_status_message,:text)[0]==range+" "+sensor
   end
 

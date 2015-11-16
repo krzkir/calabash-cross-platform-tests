@@ -34,7 +34,7 @@ Scenario: Low temperature alert
   And I press Log Out
   Then I should see welcome screen
 
-@sensor @alert @fast
+@sensor @alert 
 Scenario: High temperature alert
   Given I set temperature to 37
   Given I can log in
@@ -87,3 +87,15 @@ Scenario: Checking if color picker knob is in correct position when choosing Qui
 	  And I press My Account
 	  And I press Log Out
 	  Then I should see welcome screen
+
+ @sensor @alert @smoke
+Scenario: I can dismiss an active smoke alarm
+    Given I activate smoke alarm
+    Given I can log in
+    Then I should see active alarm message
+    Then I dismiss the alarm
+    Then I should see All Clear message
+    Then I open drawer menu
+    And I press My Account
+    And I press Log Out
+    Then I should see welcome screen

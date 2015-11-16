@@ -57,13 +57,13 @@ class HomeScreen < Calabash::IBase
   end
 
   def temperature(reading)
-    sleep 1  
-    fail unless query(temp_reading,:text)[0]==reading.to_s   
+    sleep 3 
+    fail("wrong reading") unless query(temp_reading,:text)[0]==reading.to_s   
   end
 
   def humidity(reading)
-    sleep 1
-    fail unless query(humidity_reading,:text)[0]==reading.to_s   
+    sleep 3
+    fail("wrong reading") unless query(humidity_reading,:text)[0]==reading.to_s   
   end
 
 

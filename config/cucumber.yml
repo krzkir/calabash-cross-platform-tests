@@ -2,7 +2,7 @@
 ## YAML Template
 
 
-android: PLATFORM=android -r features/support -r features/step_definitions -r features/android/support -r features/android/helpers -r features/android/pages/ 
+android: PLATFORM=android RESET_BETWEEN_SCENARIOS=1 -r features/support -r features/step_definitions -r features/android/support -r features/android/helpers -r features/android/pages/ 
 
 ios: PLATFORM=ios DEVICE_TARGET="iPhone 6s (9.1)" -r features/support -r features/step_definitions -r features/ios/support -r features/ios/helpers  -r features/ios/pages 
 

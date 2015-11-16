@@ -26,4 +26,10 @@ class Emulator
   	save_json	
   end
 
+  def activate_smoke_alarm
+    read_json
+    @obj["alarms"]["smoke"]["active"]=true
+    save_json
+  end
+
 end

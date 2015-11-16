@@ -106,3 +106,16 @@ Given /^I set humidity to (\d+)$/ do |val|
   @emulator=Emulator.new
   @emulator.set_humidity(val)
 end
+
+When /^I activate smoke alarm$/ do
+  @emulator=Emulator.new
+  @emulator.activate_smoke_alarm
+end
+
+Then /^I should see active alarm message$/ do
+  @alarm_screen=page(AlarmScreen).await
+end
+
+Then /^I dismiss the alarm$/ do
+  @alarm_screen.dismiss_alarm
+end

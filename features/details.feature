@@ -22,7 +22,7 @@ Scenario: I can change my name
   And I press Log Out
   Then I should see welcome screen
 
-@new @edit @login
+@edit @login
 Scenario: I can change my phone number
   Given I can log in
   Then I open drawer menu
