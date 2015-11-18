@@ -53,6 +53,6 @@ class ColorsScreen < Calabash::ABase
     wait_for_elements_exist(color_knob)
     ay = query(color_knob)[0]["rect"]["y"].round
     ax = query(color_knob)[0]["rect"]["x"].round
-    fail("x,y was = #{ax.to_s},#{ay.to_s} but expected x,y = #{x.to_s},#{y.to_s}") unless x == ax && y == ay 
+    fail("x,y was = #{ax.to_s},#{ay.to_s} but expected x,y = #{x.to_s},#{y.to_s}") unless ( x <= ax+2 && x>=ax-2 ) && (y <= ay+2 && y>=ay-2 )
   end
 end

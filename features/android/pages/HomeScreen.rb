@@ -28,6 +28,10 @@ class HomeScreen < Calabash::ABase
 		"TextView id:'humidity_reading'"		
 	end
 
+  def empty_reading
+    "TextView id:'temperature_reading' text:'--'"
+  end
+
   def open_colors_menu
 		tap_when_element_exists(color_menu_button) 
   end
@@ -37,6 +41,7 @@ class HomeScreen < Calabash::ABase
   end
   
   def status_ok
+    wait_for_element_exists(status_message)
   	fail unless query(status_message,:text)[0]=="All Clear."
   end
 
@@ -55,12 +60,12 @@ class HomeScreen < Calabash::ABase
   end
 
   def temperature(reading)
-    sleep 1  
+    wait_for_element_does_not_exist(empty_reading) 
     fail unless query(temp_reading,:text)[0]==reading.to_s   
   end
 
   def humidity(reading)
-    sleep 1
+    wait_for_element_does_not_exist(empty_reading)
     fail unless query(humidity_reading,:text)[0]==reading.to_s   
   end
 

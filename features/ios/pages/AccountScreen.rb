@@ -83,7 +83,6 @@ class AccountScreen < Calabash::IBase
   end
 
   def change_name
-  #  wait_for_element_exists(name_field)
     if query(name_field,:text)[0]=="Te St"
       clear_text(name_field)
       touch(name_field)
@@ -99,7 +98,6 @@ class AccountScreen < Calabash::IBase
   end
 
   def change_phone_number
- #   wait_for_element_exists(phone_number_field)
     if query(phone_number_field,:text)[0]=="8484545484"
       clear_text(phone_number_field)
       touch(phone_number_field)

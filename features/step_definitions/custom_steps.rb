@@ -18,6 +18,7 @@ end
 
 Then /^I should see password change form$/ do
   @password_screen=page(PasswordChangeScreen).await
+  @password_screen.check_elements
 end
 
 Then /^I should see All Clear message$/ do
@@ -40,7 +41,7 @@ Given /^I can log in$/ do
   @welcome_screen=page(WelcomeScreen).await
   @welcome_screen.tap_login_button
   @login_page=page(LoginScreen).await
-  @login_page.login_with('test@te.st','test1234')
+  @login_page.login_with('test2@te.st','test1234')
 end
 
 Given /^I login with incorrect data$/ do
@@ -112,10 +113,34 @@ When /^I activate smoke alarm$/ do
   @emulator.activate_smoke_alarm
 end
 
+When /^I activate co alarm$/ do
+  @emulator=Emulator.new
+  @emulator.activate_co_alarm
+end
+
 Then /^I should see active alarm message$/ do
   @alarm_screen=page(AlarmScreen).await
 end
 
 Then /^I dismiss the alarm$/ do
   @alarm_screen.dismiss_alarm
+end
+
+And /^I press residence label$/ do
+  @menu_screen=page(MenuScreen).await
+  @menu_screen.tap_residence_button
+end
+
+Then /^I press emergency contacts$/ do
+  @residence_screen=page(ResidenceSettingsScreen).await
+  @residence_screen.tap_emergency_contacts
+end
+
+And /^I add five emergency contacts$/ do
+  5.times do |count|
+    @emergency_contacts_screen=page(EmergencyContactsScreen).await
+    @emergency_contacts_screen.tap_add_contact
+    @add_contact_screen=page(AddEmergencyContactScreen).await
+    @add_contact_screen.add_contact("test#{(count+1).to_s}","test#{(count+1).to_s}@te.st","800700600#{(count+1).to_s}")
+  end
 end

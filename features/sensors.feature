@@ -45,7 +45,7 @@ Scenario: High temperature alert
   And I press Log Out
   Then I should see welcome screen
 
-  @sensor @alert 
+@sensor @alert 
 Scenario: Low humidity alert
   Given I set humidity to 10
   And I set temperature to 17
@@ -57,7 +57,7 @@ Scenario: Low humidity alert
   And I press Log Out
   Then I should see welcome screen
 
-  @sensor @alert
+@sensor @alert
 Scenario: High humidity alert
   Given I set humidity to 90
 	Given I can log in
@@ -68,7 +68,7 @@ Scenario: High humidity alert
   And I press Log Out
   Then I should see welcome screen
 
-  @light
+@light
 Scenario: Checking if color picker knob is in correct position when choosing Quick colors
   	Given I can log in
   	When I open colors menu
@@ -88,9 +88,11 @@ Scenario: Checking if color picker knob is in correct position when choosing Qui
 	  And I press Log Out
 	  Then I should see welcome screen
 
- @sensor @alert @smoke
+@sensor @alert @smoke
 Scenario: I can dismiss an active smoke alarm
     Given I activate smoke alarm
+    Given I set temperature to 17
+    Given I set humidity to 50
     Given I can log in
     Then I should see active alarm message
     Then I dismiss the alarm

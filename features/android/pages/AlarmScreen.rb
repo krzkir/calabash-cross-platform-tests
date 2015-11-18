@@ -9,7 +9,8 @@ class AlarmScreen < Calabash::ABase
   end
 
   def dismiss_alarm
-    tap_when_element_exists(dismiss_button)
+  	wait_for_element_exists(dismiss_button)
+	touch(dismiss_button)
   end
   
 end

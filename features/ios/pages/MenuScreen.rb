@@ -3,7 +3,7 @@ require 'calabash-cucumber/ibase'
 class MenuScreen < Calabash::IBase
   
   def trait
-    "* marked:'My Account'"
+    "label marked:'My Account'"
   end
 
   def account_button

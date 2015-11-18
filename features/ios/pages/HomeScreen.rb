@@ -30,6 +30,10 @@ class HomeScreen < Calabash::IBase
     "label id:'Label.humidity-value'"    
   end
 
+  def empty_reading
+    "label text:'--'"
+  end
+
   def open_drawer
   	wait_for_element_exists(menu_button)
     touch(menu_button)
@@ -57,12 +61,12 @@ class HomeScreen < Calabash::IBase
   end
 
   def temperature(reading)
-    sleep 3 
+    wait_for_element_does_not_exist(empty_reading)
     fail("wrong reading") unless query(temp_reading,:text)[0]==reading.to_s   
   end
 
   def humidity(reading)
-    sleep 3
+    wait_for_element_does_not_exist(empty_reading)
     fail("wrong reading") unless query(humidity_reading,:text)[0]==reading.to_s   
   end
 

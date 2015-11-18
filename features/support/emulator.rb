@@ -32,4 +32,10 @@ class Emulator
     save_json
   end
 
+  def activate_co_alarm
+    read_json
+    @obj["alarms"]["co"]["active"]=true
+    save_json
+  end
+
 end

@@ -21,7 +21,7 @@ class LoginScreen < Calabash::ABase
   end
 
   def success_message
-    "textView text:'Success!'"
+    "TextView text:'Success!'"
   end
 
   def invalid_message
@@ -48,6 +48,9 @@ class LoginScreen < Calabash::ABase
 
   def wait_for_success_message
     wait_for_element_exists(success_message)
+  end
+
+  def wait_for_success_message_disappear
     wait_for_elements_do_not_exist(success_message)
   end
   
@@ -61,6 +64,7 @@ class LoginScreen < Calabash::ABase
     change_password(pass)
     tap_login_button
     wait_for_success_message
+    wait_for_success_message_disappear
   end
 
   def invalid_login(email, pass)
